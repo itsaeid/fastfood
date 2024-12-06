@@ -1,19 +1,15 @@
-import { useState } from 'react'
-
-import './App.css'
+// import { useState } from "react";
+import "./App.css";
+import Header from "./component/Header";
 
 function App() {
+  // const [count, setCount] = useState(0);
+
   return (
     <>
-      <head>
-        <div>
-          <div>
-            <h1>fast food</h1>
-          </div>
-        </div>
-      </head>
+      <Header title="فست فود آنلاین"/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
