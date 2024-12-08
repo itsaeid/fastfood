@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./component/Header";
 import OrderList from "./component/OrderList";
-import { Cart, Product } from "./Interface"
+import { Cart, Product } from "./Interface";
+import CartOrder from "./component/Cart";
 
 function App() {
   const [cart, setCart] = useState<OrderList[]>([]);
@@ -27,6 +28,7 @@ function App() {
     <>
       <Header title="فست فود آنلاین"/>
       <OrderList addToCart={addToCart}/>
+      <CartOrder cart={cart}/>
     </>
   );
 }
