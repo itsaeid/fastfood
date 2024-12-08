@@ -1,7 +1,7 @@
 //put and produce interfaces here
 
 
-export interface Card {
+export interface Cart {
     id: number;
     name: string;
     price: number;
