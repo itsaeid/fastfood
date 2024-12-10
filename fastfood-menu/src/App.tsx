@@ -5,6 +5,9 @@ import OrderList from "./component/OrderList";
 import { Cart, Product } from "./Interface";
 import CartOrder from "./component/Cart";
 import Footer from "./component/Footer";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 
 function App() {
   const [cart, setCart] = useState<OrderList[]>([]);
@@ -27,10 +30,11 @@ function App() {
 
   return (
     <>
-      <Header title="فست فود آنلاین"/>
+      <Header title="فست فود آنلاین" tagline="بهترین غذاها در سریع‌ترین زمان" logoSrc="/img/logo.png"/>
       <OrderList addToCart={addToCart}/>
       <CartOrder cart={cart}/>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

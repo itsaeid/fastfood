@@ -92,13 +92,13 @@ type OrderListProps = {
   addToCart: (product: Product) => void;
 };
 
-const OrderList: React.FC<Product> = ({ addToCart }: OrderListProps) => {
+const OrderList: React.FC<OrderListProps> = ({ addToCart }) => {
   return (
-    <div className="flex flex-wrap w-[1272px] gap-10 p-4 md:flex mx-auto">
+    <div className="overflow-hidden flex-wrap flex justify-center lg:w-[1024px] xl:w-[1280px] gap-10 p-4 md:flex md:w-[768px] sm:w-[640px] mx-auto">
       {products.map((product) => (
         <div
           key={product.id}
-          className="min-h-10 text-center bg-gray-200 flex flex-col items-start p-2 rounded-lg shadow-xl "
+          className="min-h-10 text-center bg-gray-200 flex flex-col items-start p-2 rounded-lg shadow-xl"
         >
           <img
             src={product.picUrl}
@@ -123,5 +123,6 @@ const OrderList: React.FC<Product> = ({ addToCart }: OrderListProps) => {
     </div>
   );
 };
+
 
 export default OrderList;

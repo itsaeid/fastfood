@@ -10,14 +10,14 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({logoSrc, title, tagline})=> {
   return (
     <>
-      <div className="w-full flex justify-between items-center bg-red-400 py-4 px-24">
+      <div className="w-full flex justify-between items-center bg-red-400 sm:px-0 py-4 lg:px-24">
         <div className="flex gap-2 items-center">
-          <img src="/img/logo.png" alt={title} className="w-10" />
-          <h1 className="font-bold text-xl text-white">{title}</h1>
+          <img src={logoSrc} alt={title} className="w-10" />
+          <h1 className="font-bold sm:text-[13px] md:text-[15px] lg:text-xl text-white">{title}</h1>
         </div>
         <div>
-          <span className="font-bold text-xl text-white">
-            بهترین غذاها در سریع‌ترین زمان
+          <span className="font-bold lg:text-xl md:text-[15px] sm:text-[13px] text-white">
+            {tagline}
           </span>
         </div>
       </div>
