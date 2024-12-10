@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 
 function App() {
-  const [cart, setCart] = useState<OrderList[]>([]);
+  const [cart, setCart] = useState<Cart[]>([]);
 
   const addToCart = (product: Product) => {
     setCart((prevCart)=>{
@@ -32,7 +32,7 @@ function App() {
     <>
       <Header title="فست فود آنلاین" tagline="بهترین غذاها در سریع‌ترین زمان" logoSrc="/img/logo.png"/>
       <OrderList addToCart={addToCart}/>
-      <CartOrder cart={cart}/>
+      <CartOrder cart={cart} setCart={setCart}/>
       <Footer />
       <ToastContainer />
     </>

@@ -1,44 +1,46 @@
-import { Cart } from "../Interface";
+import { Cart, Product } from "../Interface";
 import { useState } from "react";
 import Order from "./Order";
 
 
-type CartProps = {
+
+interface CartProps {
     cart: Cart[];
+    setCart: React.Dispatch<React.SetStateAction<Cart[]>>;
 }
 
 
 
-const CartOrder = ({ cart }: CartProps)=>{
+const CartOrder = ({ cart, setCart }: CartProps)=>{
 
     // const [cart, setCart] = useState<Cart[]>(cart);
 
-    // //increasing order
-    // const increaseOrder = (id: number) => {
-    //     setCart(prevCart =>
-    //         prevCart.map(item =>
-    //             item.id === id ? {...item, quantity: item.quantity + 1} : item
-    //         )
-    //     );
-    // };
+    //increasing order
+    const increaseOrder = (id: number) => {
+        setCart(prevCart =>
+            prevCart.map(item =>
+                item.id === id ? {...item, quantity: item.quantity + 1} : item
+            )
+        );
+    };
 
 
-    // //decreasing order
-    // const decreaseOrder = (id: number) => {
-    //     setCart(prevCart =>
-    //         prevCart.map(item =>
-    //             item.id === id && item.quantity > 1
-    //             ? {...item, quantity: item.quantity - 1}
-    //             : item
-    //         )
-    //     );
-    // };
+    //decreasing order
+    const decreaseOrder = (id: number) => {
+        setCart(prevCart =>
+            prevCart.map(item =>
+                item.id === id && item.quantity > 1
+                ? {...item, quantity: item.quantity - 1}
+                : item
+            )
+        );
+    };
 
 
-    // //deleting order
-    // const deletingOrdr = (id: number) =>{
-    //     setCart(prevCart => prevCart.filter(item => item.id !== id))
-    // };
+    //deleting order
+    const deletingOrdr = (id: number) =>{
+        setCart(prevCart => prevCart.filter(item => item.id !== id))
+    };
 
     //total
     const totalPrice = cart.reduce((a,item)=> a + item.quantity * item.price, 0);
@@ -58,12 +60,12 @@ const CartOrder = ({ cart }: CartProps)=>{
                     <div key={item.id} className="flex justify-between  w-full items-center mt-2">
                         <p className="font-semibold w-[30%] text-lg">{item.name}</p>
                         <div className="flex items-center w-[33%] justify-center">
-                            <button className="font-semibold text-2xl bg-gray-400 rounded-md w-8 h-8">+</button>
+                            <button onClick={()=>increaseOrder(item.id)} className="font-semibold text-2xl bg-gray-400 rounded-md w-8 h-8">+</button>
                             <p className="font-semibold text-2xl">{item.quantity}</p>
-                            <button className="font-semibold text-2xl bg-gray-400 rounded-md w-8 h-8">-</button>
+                            <button onClick={()=>decreaseOrder(item.id)} className="font-semibold text-2xl bg-gray-400 rounded-md w-8 h-8">-</button>
                         </div>
                         <p className="font-semibold text-lg">{item.price * item.quantity} تومان</p>
-                        <button className="font-semibold text-red-500">حذف</button>
+                        <button onClick={()=>deletingOrdr(item.id)} className="font-semibold text-red-500">حذف</button>
                     </div>
                 ))
             )}
